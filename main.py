@@ -1,16 +1,26 @@
 from core.commands import create_parser
 from utils.file import read_file, convert_file
+from utils.validate import validate_url, validate_user_agent
 from scraping.metadata_analysis import scrape_tags, compare_tags
 from scraping.css_analysis import scrape_css, compare_css
-
-from urllib.parse import urlparse
 
 
 def main():
     args = create_parser()
 
     source_url = input("Type the URL for the site you want to search for mirrors by comparing metadata: ")
+
+    # Check if the source_url is valid
+    if not validate_url(source_url):
+        print("Please provide a valid URL.")
+        return
+    
     user_agent = input("Provide your User-Agent: ")
+
+    # Check if the User-Agent is valid
+    if not validate_user_agent(user_agent):
+        print("Please provide a valid User-Agent.")
+        return
 
     if args.command == "scrape_tags":
         source_tags = scrape_tags(source_url, user_agent)
