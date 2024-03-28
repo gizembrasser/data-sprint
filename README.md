@@ -16,13 +16,13 @@ Not all websites contain Verification IDs. If this is the case, another option i
 
 ### Commands
 1. **Scrape metadata from the source website** $ python main.py scrape_tags
-> _Returns the Verification IDs from the source website if available._
+> _Program will ask for a source url and User-Agent as input. Returns the Verification IDs from the source website if available._
 
 2. **Compare metadata from the source to other sites**: $ python main.py compare_tags
-> _Returns a list of mirror websites, if Verification IDs from the source are available._
+> _Program will ask for a dataset and column containing URLs as input. Returns a list of mirror websites, if Verification IDs from the source are available._
 
 3. **Scrape CSS classes from the source website**: $ python main.py scrape_css
-> _Returns the unique CSS classes from the source website._
+> _Program will ask for a source url and User-Agent as input. Returns the unique CSS classes from the source website._
 
 4. **Compare CSS classes from the source to other sites:** $ python main.py compare_css
-> _Returns a list of mirror websites based on similar CSS classes._
+> _Program will ask for a dataset and column containing URLs as input. Returns a list of mirror websites based on similar CSS classes._
