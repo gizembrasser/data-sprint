@@ -27,6 +27,7 @@ def main():
         target_urls = convert_file(df, column_name)
         
         mirrors = compare_tags(source_url, target_urls, user_agent)
+        print(mirrors)
     
     if args.command == "scrape_css":
         source_css = scrape_css(source_url, user_agent)
@@ -40,6 +41,7 @@ def main():
         target_urls = convert_file(df, column_name)
 
         mirrors = compare_css(source_url, target_urls, user_agent)
+        print(mirrors)
 
 
 if __name__ == "__main__":

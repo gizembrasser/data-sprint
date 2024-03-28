@@ -35,6 +35,7 @@ def compare_tags(source_url, target_urls, user_agent):
     source_tag = scrape_tags(source_url, user_agent)
     all_matches = []
 
+    # Scrape metadata for each target_url
     for target_url in target_urls:
       target_tag = scrape_tags(target_url, user_agent)
 
