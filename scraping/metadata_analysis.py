@@ -28,15 +28,15 @@ def scrape_tags(url, user_agent, timeout=10):
     return {}
 
 
-def compare_tags(source_url, target_urls):
+def compare_tags(source_url, target_urls, user_agent):
     """
     Compare verification meta tags between a source URL and a list of target URLs.
     """
-    source_tag = scrape_tags(source_url)
+    source_tag = scrape_tags(source_url, user_agent)
     all_matches = []
 
     for target_url in target_urls:
-      target_tag = scrape_tags(target_url)
+      target_tag = scrape_tags(target_url, user_agent)
 
       # Check for matches with each dictionary in target_tags list
       matches = {name: content for name, content in target_tag.items() if name in source_tag and source_tag[name] == content}

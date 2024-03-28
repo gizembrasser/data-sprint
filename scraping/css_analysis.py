@@ -26,22 +26,22 @@ def scrape_css(url, user_agent, timeout=10):
     return set()
 
 
-def compare_css(source_url, target_urls):
+def compare_css(source_url, target_urls, user_agent):
     """
     Compare CSS classes from a base URL to CSS classes from a list of other URLs.
     Return URLs with 90% or more common classes.
     """
-    source_css_classes = scrape_css(source_url)
+    source_css_classes = scrape_css(source_url, user_agent)
 
     matching_urls = []
-    for url in target_urls:
-        css_classes = scrape_css(url)
+    for target_url in target_urls:
+        css_classes = scrape_css(target_url, user_agent)
         common_classes = source_css_classes.intersection(css_classes)
 
         # Calculate the percentage of common classes
         percentage_common = len(common_classes) / len(source_css_classes)
 
         if percentage_common >= 0.9:
-          matching_urls.append(url)
+          matching_urls.append(target_url)
 
     return matching_urls

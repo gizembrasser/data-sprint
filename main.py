@@ -10,7 +10,7 @@ def main():
     args = create_parser()
 
     source_url = input("Type the URL for the site you want to search for mirrors by comparing metadata: ")
-    user_agent = input("Provide your user-agent: ")
+    user_agent = input("Provide your User-Agent: ")
 
     if args.command == "scrape_tags":
         source_tags = scrape_tags(source_url, user_agent)
@@ -26,8 +26,20 @@ def main():
         column_name = input("Specify the column name containing the URLs to the possible mirror sites: ")
         target_urls = convert_file(df, column_name)
         
-        mirrors = compare_tags(source_url, target_urls)
-        print(mirrors)
+        mirrors = compare_tags(source_url, target_urls, user_agent)
+    
+    if args.command == "scrape_css":
+        source_css = scrape_css(source_url, user_agent)
+        print(source_css)
+    
+    if args.command == "compare_css":
+        file_name = input("Provide a file containing the data (CSV or Excel): ")
+        df = read_file(file_name)
+        
+        column_name = input("Specify the column name containing the URLs to the possible mirror sites: ")
+        target_urls = convert_file(df, column_name)
+
+        mirrors = compare_css(source_url, target_urls, user_agent)
 
 
 if __name__ == "__main__":
