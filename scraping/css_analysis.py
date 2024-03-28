@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup, SoupStrainer
 
+
 def scrape_css(url, user_agent, timeout=10):
   """
   Fetch meta tags whose names contain 'verification' from the given URL.
