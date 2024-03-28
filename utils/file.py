@@ -22,6 +22,7 @@ def convert_file(df, column_name):
     if column_name not in df.columns:
         raise ValueError(f"Column '{column_name}' not found in DataFrame.")
 
+    df[column_name] = "https://" + df[column_name]
     column_list = df[column_name].tolist()
 
     return column_list

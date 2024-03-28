@@ -9,10 +9,10 @@ from urllib.parse import urlparse
 def main():
     args = create_parser()
 
-    if args.command == "scrape_tags":
-        source_url = input("Type the URL for the site you want to search for mirrors by comparing metadata: ")
-        user_agent = input("Provide your user-agent: ")
+    source_url = input("Type the URL for the site you want to search for mirrors by comparing metadata: ")
+    user_agent = input("Provide your user-agent: ")
 
+    if args.command == "scrape_tags":
         source_tags = scrape_tags(source_url, user_agent)
         if source_tags:
             print(source_tags)
@@ -25,9 +25,9 @@ def main():
         
         column_name = input("Specify the column name containing the URLs to the possible mirror sites: ")
         target_urls = convert_file(df, column_name)
-        print(target_urls)
-
-    
+        
+        mirrors = compare_tags(source_url, target_urls)
+        print(mirrors)
 
 
 if __name__ == "__main__":
